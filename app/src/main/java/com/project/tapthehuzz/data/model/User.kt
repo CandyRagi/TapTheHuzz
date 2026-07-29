@@ -7,6 +7,7 @@ data class User(
     val email: String = "",
     val username: String = "",
     val pfp: String = "",
+    val phoneNumber: String = "",
     val instagramLink: String = "",
     val snapchatLink: String = "",
     val tiktokLink: String = "",

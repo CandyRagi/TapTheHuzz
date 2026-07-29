@@ -4,7 +4,7 @@
             "outputFile": "com.project.tapthehuzz.wear-mergeDebugResources-66:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/f4e85790a9468d01085fb817579681ec/transformed/foundation-release/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\f4e85790a9468d01085fb817579681ec\\transformed\\foundation-release\\res\\values-en-rAU\\values-en-rAU.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -21,24 +21,24 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/2d9609bd21643b2026184e288fb57f29/transformed/credentials-1.2.0-rc01/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\0cf9f66d014fab34dc220fe90db1a5ba\\transformed\\core-1.13.1\\res\\values-en-rAU\\values-en-rAU.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,167",
-                        "endColumns": "111,113",
-                        "endOffsets": "162,276"
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,253,352,451,555,658,774",
+                        "endColumns": "95,101,98,98,103,102,115,100",
+                        "endOffsets": "146,248,347,446,550,653,769,870"
                     },
                     "to": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "105,217",
-                        "endColumns": "111,113",
-                        "endOffsets": "212,326"
+                        "startLines": "4,5,6,7,8,9,10,30",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "331,427,529,628,727,831,934,2702",
+                        "endColumns": "95,101,98,98,103,102,115,100",
+                        "endOffsets": "422,524,623,722,826,929,1045,2798"
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/593dbbae0da158bf16efff8147da5f73/transformed/browser-1.4.0/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\593dbbae0da158bf16efff8147da5f73\\transformed\\browser-1.4.0\\res\\values-en-rAU\\values-en-rAU.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -55,7 +55,24 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/e2e1ebabde0fd054f2a3df8da87da6d7/transformed/ui-release/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\2d9609bd21643b2026184e288fb57f29\\transformed\\credentials-1.2.0-rc01\\res\\values-en-rAU\\values-en-rAU.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,167",
+                        "endColumns": "111,113",
+                        "endOffsets": "162,276"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "105,217",
+                        "endColumns": "111,113",
+                        "endOffsets": "212,326"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\e2e1ebabde0fd054f2a3df8da87da6d7\\transformed\\ui-release\\res\\values-en-rAU\\values-en-rAU.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -69,23 +86,6 @@
                         "startOffsets": "1050,1142,1322,1416,1515,1907,1989,2078,2167,2251,2329,2411,2484,2560,2632,2803,2880,2946",
                         "endColumns": "91,81,93,98,86,81,88,88,83,77,81,72,75,71,69,76,65,120",
                         "endOffsets": "1137,1219,1411,1510,1597,1984,2073,2162,2246,2324,2406,2479,2555,2627,2697,2875,2941,3062"
-                    }
-                },
-                {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/0cf9f66d014fab34dc220fe90db1a5ba/transformed/core-1.13.1/res/values-en-rAU/values-en-rAU.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,151,253,352,451,555,658,774",
-                        "endColumns": "95,101,98,98,103,102,115,100",
-                        "endOffsets": "146,248,347,446,550,653,769,870"
-                    },
-                    "to": {
-                        "startLines": "4,5,6,7,8,9,10,30",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "331,427,529,628,727,831,934,2702",
-                        "endColumns": "95,101,98,98,103,102,115,100",
-                        "endOffsets": "422,524,623,722,826,929,1045,2798"
                     }
                 }
             ]

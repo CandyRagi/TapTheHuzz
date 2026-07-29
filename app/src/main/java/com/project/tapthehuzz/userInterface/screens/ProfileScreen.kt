@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -84,6 +85,7 @@ fun ProfileScreen(onBackClick: () -> Unit, onSignOut: () -> Unit) {
             onSave = { newLink: String ->
                 if (user != null) {
                     val fieldToUpdate = when (selectedPlatform) {
+                        "Phone Number" -> "phoneNumber"
                         "Instagram" -> "instagramLink"
                         "Snapchat" -> "snapchatLink"
                         "Facebook" -> "facebookLink"
@@ -324,6 +326,25 @@ fun ProfileScreen(onBackClick: () -> Unit, onSignOut: () -> Unit) {
                         .weight(1f)
                         .verticalScroll(rememberScrollState())
                 ) {
+                    // Phone Number
+                    SocialAccountItem(
+                        name = "Phone Number",
+                        iconVector = Icons.Filled.Phone,
+                        link = user?.phoneNumber ?: "",
+                        onLinkClick = {
+                            if (user?.phoneNumber.isNullOrEmpty()) {
+                                selectedPlatform = "Phone Number"
+                                currentSocialLink = ""
+                                showSocialDialog = true
+                            } else {
+                                selectedPlatform = "Phone Number"
+                                showUnlinkDialog = true
+                            }
+                        }
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
                     // Instagram
                     SocialAccountItem(
                         name = "Instagram",
@@ -446,9 +467,10 @@ fun ProfileScreen(onBackClick: () -> Unit, onSignOut: () -> Unit) {
 @Composable
 fun SocialAccountItem(
     name: String,
-    iconUrl: String,
     link: String,
-    onLinkClick: () -> Unit
+    onLinkClick: () -> Unit,
+    iconUrl: String = "",
+    iconVector: androidx.compose.ui.graphics.vector.ImageVector? = null
 ) {
     Surface(
         modifier = Modifier
@@ -472,14 +494,25 @@ fun SocialAccountItem(
                     color = Color.White,
                     modifier = Modifier.size(40.dp)
                 ) {
-                    AsyncImage(
-                        model = iconUrl,
-                        contentDescription = name,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(8.dp),
-                        contentScale = ContentScale.Fit
-                    )
+                    if (iconVector != null) {
+                        Icon(
+                            imageVector = iconVector,
+                            contentDescription = name,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(8.dp),
+                            tint = Color.Black
+                        )
+                    } else {
+                        AsyncImage(
+                            model = iconUrl,
+                            contentDescription = name,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(8.dp),
+                            contentScale = ContentScale.Fit
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(

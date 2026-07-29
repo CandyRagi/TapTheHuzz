@@ -2,10 +2,12 @@ package com.project.tapthehuzz.userInterface.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 
@@ -36,11 +38,16 @@ fun SocialLinkDialog(
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
 
+                val isPhoneNumber = platformName == "Phone Number"
+
                 OutlinedTextField(
                     value = link,
                     onValueChange = { link = it },
-                    label = { Text("$platformName URL") },
+                    label = { Text(if (isPhoneNumber) "Phone Number" else "$platformName URL") },
                     singleLine = true,
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = if (isPhoneNumber) KeyboardType.Phone else KeyboardType.Uri
+                    ),
                     modifier = Modifier.fillMaxWidth()
                 )
 

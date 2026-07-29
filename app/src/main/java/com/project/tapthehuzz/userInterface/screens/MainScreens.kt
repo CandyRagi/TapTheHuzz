@@ -32,6 +32,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.foundation.lazy.LazyColumn
@@ -268,6 +269,7 @@ fun HomeScreen(onProfileClick: () -> Unit) {
                                         authRepository.updateQuickAccessListOrder(user!!.uid, newOrder)
                                     }
                                 },
+                                onGoToSettings = onProfileClick,
                                 viewMode = targetTab
                             )
                         }
@@ -349,12 +351,26 @@ fun CardContent(
     onDeleteCard: (Card) -> Unit,
     onToggleQuickAccess: (Card) -> Unit,
     onReorderCards: (List<String>) -> Unit,
+    onGoToSettings: () -> Unit,
     viewMode: String
 ) {
     var isEditOrderMode by remember { mutableStateOf(false) }
+    var showQrDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(viewMode) {
         isEditOrderMode = false
+    }
+
+    if (showQrDialog) {
+        com.project.tapthehuzz.userInterface.components.QrCodeDialog(
+            username = user.username,
+            phoneNumber = user.phoneNumber,
+            onDismiss = { showQrDialog = false },
+            onGoToSettings = {
+                showQrDialog = false
+                onGoToSettings()
+            }
+        )
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -477,11 +493,7 @@ fun CardContent(
                                         Spacer(modifier = Modifier.height(120.dp))
 
                                         androidx.compose.material3.FilledTonalButton(
-                                            onClick = {
-                                                if (currentCenteredIndex in cards.indices) {
-                                                    onCardClick(cards[currentCenteredIndex])
-                                                }
-                                            },
+                                            onClick = { showQrDialog = true },
                                             modifier = Modifier
                                                 .height(50.dp),
                                             shape = CircleShape,
@@ -490,8 +502,14 @@ fun CardContent(
                                                 contentColor = Color.White
                                             )
                                         ) {
+                                            Icon(
+                                                imageVector = Icons.Default.QrCode,
+                                                contentDescription = null,
+                                                modifier = Modifier.size(20.dp)
+                                            )
+                                            Spacer(modifier = Modifier.width(8.dp))
                                             Text(
-                                                text = "Tap",
+                                                text = "QR",
                                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                                             )
                                         }

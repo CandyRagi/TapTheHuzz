@@ -4,24 +4,7 @@
             "outputFile": "com.project.tapthehuzz.wear-mergeDebugResources-66:/values-tl/values-tl.xml",
             "map": [
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/593dbbae0da158bf16efff8147da5f73/transformed/browser-1.4.0/res/values-tl/values-tl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,158,263,374",
-                        "endColumns": "102,104,110,104",
-                        "endOffsets": "153,258,369,474"
-                    },
-                    "to": {
-                        "startLines": "31,35,36,37",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "3612,4004,4109,4220",
-                        "endColumns": "102,104,110,104",
-                        "endOffsets": "3710,4104,4215,4320"
-                    }
-                },
-                {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/e2e1ebabde0fd054f2a3df8da87da6d7/transformed/ui-release/res/values-tl/values-tl.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\e2e1ebabde0fd054f2a3df8da87da6d7\\transformed\\ui-release\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/46f99d58bde9d70b6eb7f9507f0daef4/transformed/play-services-base-18.5.0/res/values-tl/values.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\46f99d58bde9d70b6eb7f9507f0daef4\\transformed\\play-services-base-18.5.0\\res\\values-tl\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/f4e85790a9468d01085fb817579681ec/transformed/foundation-release/res/values-tl/values-tl.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\f4e85790a9468d01085fb817579681ec\\transformed\\foundation-release\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -72,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/0cf9f66d014fab34dc220fe90db1a5ba/transformed/core-1.13.1/res/values-tl/values-tl.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\0cf9f66d014fab34dc220fe90db1a5ba\\transformed\\core-1.13.1\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -89,7 +72,24 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/2d9609bd21643b2026184e288fb57f29/transformed/credentials-1.2.0-rc01/res/values-tl/values-tl.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\593dbbae0da158bf16efff8147da5f73\\transformed\\browser-1.4.0\\res\\values-tl\\values-tl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,158,263,374",
+                        "endColumns": "102,104,110,104",
+                        "endOffsets": "153,258,369,474"
+                    },
+                    "to": {
+                        "startLines": "31,35,36,37",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "3612,4004,4109,4220",
+                        "endColumns": "102,104,110,104",
+                        "endOffsets": "3710,4104,4215,4320"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\2d9609bd21643b2026184e288fb57f29\\transformed\\credentials-1.2.0-rc01\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -106,7 +106,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/58e6c4654bc788f5aa5ef4a63cbe5232/transformed/play-services-basement-18.4.0/res/values-tl/values.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\58e6c4654bc788f5aa5ef4a63cbe5232\\transformed\\play-services-basement-18.4.0\\res\\values-tl\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

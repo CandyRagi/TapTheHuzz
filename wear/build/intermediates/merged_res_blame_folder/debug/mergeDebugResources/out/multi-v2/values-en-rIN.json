@@ -4,7 +4,7 @@
             "outputFile": "com.project.tapthehuzz.wear-mergeDebugResources-66:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/e2e1ebabde0fd054f2a3df8da87da6d7/transformed/ui-release/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\e2e1ebabde0fd054f2a3df8da87da6d7\\transformed\\ui-release\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/2d9609bd21643b2026184e288fb57f29/transformed/credentials-1.2.0-rc01/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\2d9609bd21643b2026184e288fb57f29\\transformed\\credentials-1.2.0-rc01\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/f4e85790a9468d01085fb817579681ec/transformed/foundation-release/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\f4e85790a9468d01085fb817579681ec\\transformed\\foundation-release\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/0cf9f66d014fab34dc220fe90db1a5ba/transformed/core-1.13.1/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\0cf9f66d014fab34dc220fe90db1a5ba\\transformed\\core-1.13.1\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -72,7 +72,7 @@
                     }
                 },
                 {
-                    "source": "/home/candy/.gradle/caches/8.13/transforms/593dbbae0da158bf16efff8147da5f73/transformed/browser-1.4.0/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\tiwar\\.gradle\\caches\\8.13\\transforms\\593dbbae0da158bf16efff8147da5f73\\transformed\\browser-1.4.0\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

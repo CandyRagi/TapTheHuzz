@@ -18,9 +18,7 @@ import kotlinx.coroutines.delay
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
@@ -51,8 +49,7 @@ fun SplashScreen(onNavigateToNext: (String) -> Unit) {
                 painter = painterResource(id = R.drawable.tap_the_huzz_circle_logo),
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .size(200.dp)
-                    .clip(CircleShape),
+                    .size(200.dp),
                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
             )
             Text(
