@@ -4,6 +4,7 @@ import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -18,17 +19,22 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
 import com.project.tapthehuzz.data.model.User
 import com.project.tapthehuzz.data.repository.AuthRepository
+import com.project.tapthehuzz.userInterface.theme.AccentRed
+import com.project.tapthehuzz.userInterface.theme.GlassBorder
+import com.project.tapthehuzz.userInterface.theme.GlassSurface
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditProfileDialog(
     user: User,
@@ -41,12 +47,13 @@ fun EditProfileDialog(
 
     var username by remember { mutableStateOf(user.username) }
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
-    
+
     var oldPassword by remember { mutableStateOf("") }
     var newPassword by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
-    
+
     var isLoading by remember { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
@@ -54,26 +61,53 @@ fun EditProfileDialog(
         selectedImageUri = uri
     }
 
-    Dialog(onDismissRequest = onDismiss) {
-        Surface(
-            shape = RoundedCornerShape(16.dp),
-            color = MaterialTheme.colorScheme.surface,
+    val fieldColors = OutlinedTextFieldDefaults.colors(
+        focusedBorderColor = AccentRed,
+        unfocusedBorderColor = GlassBorder,
+        focusedContainerColor = Color.Transparent,
+        unfocusedContainerColor = Color.Transparent,
+        focusedLabelColor = AccentRed,
+        unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant
+    )
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = GlassSurface,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
+        dragHandle = null
+    ) {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .fillMaxHeight(0.9f)
+                .verticalScroll(rememberScrollState())
+                .imePadding()
+                .padding(bottom = 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Box(
+                modifier = Modifier
+                    .padding(vertical = 12.dp)
+                    .width(40.dp)
+                    .height(4.dp)
+                    .clip(RoundedCornerShape(2.dp))
+                    .background(GlassBorder)
+            )
+
+            Text(
+                text = "Edit Profile",
+                style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
+            )
+
             Column(
                 modifier = Modifier
-                    .padding(16.dp)
-                    .verticalScroll(rememberScrollState()),
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = "Edit Profile",
-                    style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(bottom = 16.dp)
-                )
-
                 // Profile Picture
                 Box(
                     contentAlignment = Alignment.Center,
@@ -107,13 +141,13 @@ fun EditProfileDialog(
                 Text(
                     text = "Change Photo",
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = AccentRed,
                     modifier = Modifier
                         .padding(top = 8.dp)
                         .clickable { launcher.launch("image/*") }
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 // Username
                 OutlinedTextField(
@@ -121,21 +155,23 @@ fun EditProfileDialog(
                     onValueChange = { username = it },
                     label = { Text("Username") },
                     singleLine = true,
+                    shape = RoundedCornerShape(12.dp),
+                    colors = fieldColors,
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                Divider()
-                Spacer(modifier = Modifier.height(16.dp))
+                HorizontalDivider(color = GlassBorder)
+                Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
                     text = "Change Password",
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.align(Alignment.Start)
                 )
-                
-                Spacer(modifier = Modifier.height(8.dp))
+
+                Spacer(modifier = Modifier.height(12.dp))
 
                 OutlinedTextField(
                     value = oldPassword,
@@ -144,10 +180,12 @@ fun EditProfileDialog(
                     singleLine = true,
                     visualTransformation = PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = fieldColors,
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
                 OutlinedTextField(
                     value = newPassword,
@@ -156,10 +194,12 @@ fun EditProfileDialog(
                     singleLine = true,
                     visualTransformation = PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = fieldColors,
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
                 OutlinedTextField(
                     value = confirmPassword,
@@ -168,6 +208,8 @@ fun EditProfileDialog(
                     singleLine = true,
                     visualTransformation = PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = fieldColors,
                     modifier = Modifier.fillMaxWidth()
                 )
 
@@ -176,18 +218,21 @@ fun EditProfileDialog(
                 // Buttons
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    TextButton(onClick = onDismiss) {
+                    OutlinedButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
                         Text("Cancel")
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
                     Button(
                         onClick = {
                             scope.launch {
                                 isLoading = true
                                 val updates = mutableMapOf<String, Any>()
-                                
+
                                 if (username != user.username) {
                                     updates["username"] = username
                                 }
@@ -232,10 +277,17 @@ fun EditProfileDialog(
                                 onDismiss()
                             }
                         },
-                        enabled = !isLoading
+                        enabled = !isLoading,
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = AccentRed,
+                            contentColor = Color.White,
+                            disabledContainerColor = AccentRed.copy(alpha = 0.5f)
+                        )
                     ) {
                         if (isLoading) {
-                            CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.onPrimary)
+                            CircularProgressIndicator(modifier = Modifier.size(24.dp), color = Color.White)
                         } else {
                             Text("Save")
                         }

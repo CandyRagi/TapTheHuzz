@@ -53,20 +53,49 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Set our service as the preferred service when app is in foreground
-        // This prevents the "Select an app" dialog
-        cardEmulation?.setPreferredService(
-            this,
-            ComponentName(this, MyHostApduService::class.java)
-        )
-        Log.d("MainActivity", "Set preferred HCE service")
+        setPreferredHceService()
     }
 
     override fun onPause() {
         super.onPause()
         // Unset preferred service when app goes to background
-        cardEmulation?.unsetPreferredService(this)
-        Log.d("MainActivity", "Unset preferred HCE service")
+        try {
+            cardEmulation?.unsetPreferredService(this)
+            Log.d("MainActivity", "Unset preferred HCE service")
+        } catch (e: IllegalStateException) {
+            Log.e("MainActivity", "Failed to unset preferred HCE service", e)
+        }
+    }
+
+    // On some OEM skins (notably Samsung/One UI) onResume() can fire before the window
+    // actually has focus, which makes setPreferredService() silently no-op. Re-asserting
+    // here once focus is confirmed is the more reliable hook for those devices.
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            setPreferredHceService()
+        }
+    }
+
+    private fun setPreferredHceService() {
+        if (nfcAdapter?.isEnabled != true) return
+        try {
+            // Set our service as the preferred service when app is in foreground.
+            // This only suppresses the "Select an app" chooser while this Activity is
+            // resumed and focused - it cannot prevent the chooser when the app isn't in
+            // the foreground, since our AID is registered under category="other" (the
+            // NDEF tag application ID), which has no persistent system-wide default the
+            // way category="payment" does. If another service on the device (e.g. a
+            // Samsung system "embedded NFC tag" service) also claims that AID, the OS
+            // will always ask while Tapzz isn't in front.
+            cardEmulation?.setPreferredService(
+                this,
+                ComponentName(this, MyHostApduService::class.java)
+            )
+            Log.d("MainActivity", "Set preferred HCE service")
+        } catch (e: IllegalStateException) {
+            Log.e("MainActivity", "Failed to set preferred HCE service", e)
+        }
     }
 }
 

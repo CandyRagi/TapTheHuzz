@@ -77,12 +77,69 @@ fun AllCardsScreen(
         }.reversed()
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize()) {
 
+        if (filteredCards.isEmpty()) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                if (searchQuery.isNotEmpty()) {
+                    Text(
+                        text = "No cards found",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                } else {
+                    EmptyStateCard(
+                        onClick = onAddClick,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(240.dp)
+                            .padding(bottom = 50.dp)
+                    )
+                }
+            }
+        } else {
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(top = 92.dp, bottom = 24.dp)
+            ) {
+                items(filteredCards) { card ->
+                    val interactionSource = remember { MutableInteractionSource() }
+                    val isPressed by interactionSource.collectIsPressedAsState()
+                    val scale by animateFloatAsState(if (isPressed) 1.02f else 1f)
 
-        // Search Bar and Add Button Row
+                    Box {
+                        CardItem(
+                            card = card,
+                            username = user.username,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(220.dp)
+                                .graphicsLayer {
+                                    scaleX = scale
+                                    scaleY = scale
+                                }
+                                .combinedClickable(
+                                    interactionSource = interactionSource,
+                                    indication = null,
+                                    onClick = { onCardClick(card) },
+                                    onLongClick = { cardForMenu = card }
+                                )
+                        )
+                    }
+                }
+            }
+        }
+
+        // Floating Search Bar and Add Button Row
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .fillMaxWidth()
+                .padding(top = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Glassmorphic Search Bar
@@ -93,9 +150,9 @@ fun AllCardsScreen(
                     .border(
                         width = 1.dp,
                         color = GlassBorder,
-                        shape = RoundedCornerShape(16.dp)
+                        shape = CircleShape
                     ),
-                shape = RoundedCornerShape(16.dp),
+                shape = CircleShape,
                 color = GlassSurface.copy(alpha = 0.6f)
             ) {
                 TextField(
@@ -194,63 +251,6 @@ fun AllCardsScreen(
                     tint = Color.White,
                     modifier = Modifier.padding(14.dp)
                 )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        if (filteredCards.isEmpty()) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                if (searchQuery.isNotEmpty()) {
-                    Text(
-                        text = "No cards found",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                } else {
-                    EmptyStateCard(
-                        onClick = onAddClick,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(240.dp)
-                            .padding(bottom = 50.dp)
-                    )
-                }
-            }
-        } else {
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                contentPadding = PaddingValues(top = 8.dp, bottom = 24.dp)
-            ) {
-                items(filteredCards) { card ->
-                    val interactionSource = remember { MutableInteractionSource() }
-                    val isPressed by interactionSource.collectIsPressedAsState()
-                    val scale by animateFloatAsState(if (isPressed) 1.02f else 1f)
-
-                    Box {
-                        CardItem(
-                            card = card,
-                            username = user.username,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(220.dp)
-                                .graphicsLayer {
-                                    scaleX = scale
-                                    scaleY = scale
-                                }
-                                .combinedClickable(
-                                    interactionSource = interactionSource,
-                                    indication = null,
-                                    onClick = { onCardClick(card) },
-                                    onLongClick = { cardForMenu = card }
-                                )
-                        )
-                    }
-                }
             }
         }
     }
